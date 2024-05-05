@@ -1,0 +1,15 @@
+import pickle
+from tensorflow.keras.preprocessing.text import Tokenizer
+
+# Load preprocessed data
+with open('data/preprocessed_data.txt', 'r') as file:
+    data = file.readlines()
+
+# Tokenize the text data
+tokenizer = Tokenizer()
+tokenizer.fit_on_texts(data)
+
+# Save the tokenizer
+with open('model/tokenizer.pickle', 'wb') as handle:
+    pickle.dump(tokenizer, handle, protocol=pickle.HIGHEST_PROTOCOL)
+
